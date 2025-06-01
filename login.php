@@ -12,7 +12,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         $mensagem = "Preencha sua senha";
     } else {
         $email = $conexao->real_escape_string($_POST['email']);
-        $senha = $_POST['senha']; L
+        $senha = $_POST['senha']; 
         
         $sql_code = "SELECT * FROM aluno WHERE email = '$email'";
         $sql_query = $conexao->query($sql_code) or die("Falha na execução do código SQL: " . $conexao->error);
