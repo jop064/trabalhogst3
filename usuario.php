@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['id'])) {
     header("Location: login.php"); 
     exit();
@@ -9,13 +8,25 @@ if (!isset($_SESSION['id'])) {
 
 include('conexao.php');
 
-
 $id = $_SESSION['id'];
 $sql = "SELECT * FROM aluno WHERE id = '$id'";
 $result = $conexao->query($sql);
 
 if ($result->num_rows == 1) {
     $usuario = $result->fetch_assoc();
+
+    // Buscar nome da escola
+    $escola_id = $usuario['escola_id'];
+    $sql_escola = "SELECT nome FROM escola WHERE id = '$escola_id'";
+    $result_escola = $conexao->query($sql_escola);
+
+    if ($result_escola->num_rows == 1) {
+        $escola = $result_escola->fetch_assoc();
+        $nome_escola = $escola['nome'];
+    } else {
+        $nome_escola = "Escola não encontrada";
+    }
+
 } else {
     echo "Usuário não encontrado.";
     exit();
@@ -109,8 +120,8 @@ if ($result->num_rows == 1) {
         <div class="info-content"><?= htmlspecialchars($usuario['email']); ?></div>
       </div>
       <div class="info-row">
-        <div class="info-label">Senha:</div>
-        <div class="info-content"><?= htmlspecialchars($usuario['senha']); ?></div>
+        <div class="info-label">Escola:</div>
+        <div class="info-content"><?= htmlspecialchars($nome_escola); ?></div>
       </div>
     </div>
 
