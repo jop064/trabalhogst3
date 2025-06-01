@@ -3,13 +3,13 @@ session_start();
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['id'])) {
-    header("Location: index.php"); // redireciona para login se não estiver logado
+    header("Location: login.php"); 
     exit();
 }
 
 include('conexao.php');
 
-// Buscar dados do usuário no banco para mostrar
+
 $id = $_SESSION['id'];
 $sql = "SELECT * FROM aluno WHERE id = '$id'";
 $result = $conexao->query($sql);
@@ -27,92 +27,94 @@ if ($result->num_rows == 1) {
 <head>
   <meta charset="UTF-8" />
   <title>Área do Usuário</title>
-  <style> 
-    /* Reset básico */
-    * {
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e9f7ec;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0f2f1, #a5d6a7);
-      color: #2e7d32;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    /* Cartão central */
-    .container {
+    .user-container {
+      max-width: 800px;
+      margin: 50px auto;
       background-color: #ffffff;
-      padding: 40px 30px;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-      width: 100%;
-      max-width: 420px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .user-header {
       text-align: center;
-      border-left: 10px solid #66bb6a;
-    }
-
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 15px;
-      color: #388e3c;
-    }
-
-    p {
-      font-size: 1em;
-      margin: 12px 0;
-      color: #4e944f;
-    }
-
-    strong {
       color: #2e7d32;
+      font-size: 2em;
+      margin-bottom: 20px;
     }
 
-    a {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 12px 24px;
-      background-color: #43a047;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .info-label {
       font-weight: bold;
-      transition: background 0.3s, transform 0.2s;
+      color: #388e3c;
+      width: 100px;
+      flex-shrink: 0;
     }
 
-    a:hover {
-      background-color: #2e7d32;
-      transform: scale(1.05);
+    .info-row {
+      display: flex;
+      align-items: center;
     }
 
-    @media (max-width: 500px) {
-      .container {
-        padding: 30px 20px;
-      }
+    .info-content {
+      background-color: #f1f8f4;
+      padding: 10px 15px;
+      border-radius: 5px;
+      color: #333;
+      flex-grow: 1;
+    }
 
-      h1 {
-        font-size: 1.5em;
-      }
+    .edit-button {
+      display: inline-block;
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
 
-      p {
-        font-size: 0.95em;
-      }
+    .edit-button:hover {
+      background-color: #388e3c;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Bem-vindo, <?= htmlspecialchars($usuario['nome']); ?>!</h1>
-    <p><strong>Email:</strong> <?= htmlspecialchars($usuario['email']); ?></p>
-    <p><strong>Senha:</strong> <?= htmlspecialchars($usuario['senha']); ?></p>
-    <a href="logout.php">Sair</a>
+  <div class="user-container">
+    <div class="user-header">
+      Bem-vindo, <?= htmlspecialchars($usuario['nome']); ?>!
+    </div>
+
+    <div class="user-info">
+      <div class="info-row">
+        <div class="info-label">Email:</div>
+        <div class="info-content"><?= htmlspecialchars($usuario['email']); ?></div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Senha:</div>
+        <div class="info-content"><?= htmlspecialchars($usuario['senha']); ?></div>
+      </div>
+    </div>
+
+    <a href="logout.php" class="edit-button">Sair</a>
   </div>
 </body>
 </html>
