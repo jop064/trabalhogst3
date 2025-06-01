@@ -9,40 +9,36 @@
 </head>
 <body>
 
-  <!-- Menu Responsivo -->
+  
   <header>
     
-    <nav>
-     <div class="logo-container">
-      <a href="usuario.php">
-      <img src="logo.png" alt="Logo da empresa" class="logo1">
-      </a>
-      </div>
-      <a class="logo">EcoScaling</a>
-      <div class="mobile-menu">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
-      <ul class="nav-list">
-        <li><a href="ecogame.php">Ecogame</a></li>
-        <li><a href="#cards">Cards</a></li>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-     
+   <nav>
+  <a class="logo">EcoScaling</a>          <!-- esquerda -->
+  <div class="nav-menu-right">             <!-- grupo do menu + login -->
+    <ul class="nav-list">
+      <li><a href="ecogame.php">Ecogame</a></li>
+      <li><a href="#cards">Cards</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="nav-right">
       <?php session_start(); ?>
-     <nav>
-    <?php if (isset($_SESSION['id'])): ?>
-    <a href="perfil.php">Perfil</a>
-    <a href="logout.php">Sair</a>
-    <?php else: ?>
-   <a href="index.php" class="btn">Login/Cadastro</a>
-    <?php endif; ?>
-    </nav>
+      <?php if (isset($_SESSION['id'])): ?>
+        <a href="usuario.php" class="perfil-link">
+          <img src="logo.png" alt="Logo" class="logo1">
+          <span>Perfil</span>
+        </a>
+      <?php else: ?>
+        <a href="login.php" class="btn">Login/Cadastro</a>
+      <?php endif; ?>
+    </div>
+  </div>
+</nav>
 
 
-    </nav>
+
+
+    
   </header>
 
   <!-- Cards -->
