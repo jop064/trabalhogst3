@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Sustentabilidade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e8f5e9;
+      padding: 20px;
+      text-align: center;
+    }
+    .quiz-container {
+      background: #ffffff;
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .pergunta {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #2e7d32;
+    }
+    .opcao {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      width: 80%;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      background-color: #ffffff;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .opcao:hover {
+      background-color: #c8e6c9;
+    }
+    #proxima {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h2>Quiz EcoScaling 🌿</h2>
+    <div id="pergunta" class="pergunta"></div>
+    <div id="opcoes"></div>
+    <button id="proxima">Próxima</button>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    const perguntas = [
+  {
+    texto: "Por que é importante pensar no futuro ao consumir recursos naturais?",
+    opcoes: [
+      "Porque os recursos são infinitos e sempre existirão",
+      "Para garantir que as próximas gerações também tenham acesso a eles",
+      "Porque isso ajuda a gastar mais energia"
+    ],
+    resposta: "Para garantir que as próximas gerações também tenham acesso a eles"
+  },
+  {
+    texto: "Qual das ações abaixo mais contribui para o consumo consciente?",
+    opcoes: [
+      "Comprar produtos descartáveis por serem baratos",
+      "Reutilizar materiais e evitar desperdício",
+      "Consumir produtos de grandes marcas apenas"
+    ],
+    resposta: "Reutilizar materiais e evitar desperdício"
+  },
+  {
+    texto: "Sobre energias renováveis, assinale a alternativa correta:",
+    opcoes: [
+      "Elas são finitas e causam poluição intensa",
+      "Vêm de fontes naturais que se renovam constantemente",
+      "São obtidas apenas por meio do petróleo"
+    ],
+    resposta: "Vêm de fontes naturais que se renovam constantemente"
+  },
+  {
+    texto: "A reciclagem é importante porque:",
+    opcoes: [
+      "Diminui a necessidade de extrair novos recursos",
+      "Aumenta a produção de lixo nas cidades",
+      "É uma forma de gastar mais energia elétrica"
+    ],
+    resposta: "Diminui a necessidade de extrair novos recursos"
+  },
+  {
+    texto: "O turismo sustentável busca:",
+    opcoes: [
+      "Reduzir o número de turistas nos lugares famosos",
+      "Promover viagens de luxo sem se preocupar com o ambiente",
+      "Valorizar o meio ambiente e a cultura local ao viajar"
+    ],
+    resposta: "Valorizar o meio ambiente e a cultura local ao viajar"
+  },
+  {
+    texto: "Uma construção sustentável deve:",
+    opcoes: [
+      "Utilizar materiais recicláveis e priorizar eficiência energética",
+      "Ser feita rapidamente com qualquer material",
+      "Ignorar o impacto ambiental desde que seja moderna"
+    ],
+    resposta: "Utilizar materiais recicláveis e priorizar eficiência energética"
+  },
+  {
+    texto: "Qual a relação entre alimentação e sustentabilidade?",
+    opcoes: [
+      "Nenhuma, comer não afeta o planeta",
+      "Escolher alimentos locais e da estação reduz impactos ambientais",
+      "Quanto mais industrializado o alimento, mais sustentável ele é"
+    ],
+    resposta: "Escolher alimentos locais e da estação reduz impactos ambientais"
+  },
+  {
+    texto: "Economizar água é importante porque:",
+    opcoes: [
+      "A água é um recurso renovável ilimitado",
+      "Ajuda a evitar o racionamento e preservar os mananciais",
+      "A água potável pode ser facilmente fabricada"
+    ],
+    resposta: "Ajuda a evitar o racionamento e preservar os mananciais"
+  }
+];
+
+    let indice = 0;
+    let acertos = 0;
+
+    const perguntaDiv = document.getElementById("pergunta");
+    const opcoesDiv = document.getElementById("opcoes");
+    const proximaBtn = document.getElementById("proxima");
+    const resultadoDiv = document.getElementById("resultado");
+
+    function carregarPergunta() {
+      const p = perguntas[indice];
+      perguntaDiv.textContent = p.texto;
+      opcoesDiv.innerHTML = '';
+      p.opcoes.forEach(op => {
+        const btn = document.createElement("button");
+        btn.className = "opcao";
+        btn.textContent = op;
+        btn.onclick = () => {
+          if (op === p.resposta) acertos++;
+          indice++;
+          if (indice < perguntas.length) {
+            carregarPergunta();
+          } else {
+            mostrarResultado();
+          }
+        };
+        opcoesDiv.appendChild(btn);
+      });
+    }
+
+    function mostrarResultado() {
+      perguntaDiv.textContent = "";
+      opcoesDiv.innerHTML = "";
+      proximaBtn.style.display = "none";
+      resultadoDiv.textContent = `Você acertou ${acertos} de ${perguntas.length} perguntas!`;
+    }
+
+    proximaBtn.style.display = "none";
+    carregarPergunta();
+  </script>
+</body>
+</html>
