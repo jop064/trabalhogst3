@@ -12,18 +12,23 @@
   
   <header>
     
-   <nav>
-  <a class="logo">EcoScaling</a>          <!-- esquerda -->
-  <div class="nav-menu-right">             <!-- grupo do menu + login -->
+  <nav class="navbar">
+  <div class="nav-left">
+    <a class="logo">EcoScaling</a>
+  </div>
+
+  <div class="nav-center">
     <ul class="nav-list">
       <li><a href="ecogame.php">Ecogame</a></li>
       <li><a href="#cards">Cards</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
+
     <div class="nav-right">
-      <?php session_start(); ?>
-      <?php if (isset($_SESSION['id'])): ?>
+      <?php
+      session_start();
+      if (isset($_SESSION['id'])): ?>
         <a href="usuario.php" class="perfil-link">
           <img src="logo.png" alt="Logo" class="logo1">
           <span>Perfil</span>
@@ -36,16 +41,14 @@
 </nav>
 
 
-
-
     
   </header>
 
-  <!-- Cards -->
+  
   <section class="cards-section" id="cards">
     <h2>Cards</h2>
     <div class="cards-container">
-      <!-- 10 cards exatamente como você forneceu -->
+      
       <a href="card1.html" id="link1">
         <div class="card">
           <img src="img1.png" alt="">
@@ -119,7 +122,7 @@
     </div>
   </section>
 
-  <!-- Rodapé -->
+  
   <footer id="contato">
     <div class="footer-container">
       <div class="footer-section">
