@@ -121,7 +121,23 @@
           <p>Cuidar da água hoje é garantir um amanhã possível.</p>
         </div>
       </a>
-    </div>
+     <a href="card11.html">
+      <div class="card">
+        <img src="https://img.freepik.com/vetores-gratis/jardinagem-feminina_1284-62186.jpg?semt=ais_items_boosted&w=740" alt="Natureza Sustentável">
+        <h3>Biodiversidade e preservação</h3>
+        <p>Preservar a biodiversidade é garantir o equilíbrio da vida no planeta e o futuro das próximas gerações.</p>
+      </div>
+    </a>
+    <a href="card12.html">
+      <div class="card">
+        <img src="https://img.freepik.com/vetores-gratis/conjunto-de-cartoes-de-familia-em-casa_1284-64641.jpg?semt=ais_items_boosted&w=740" alt="Natureza Sustentável">
+        <h3>Sustentabilidade em casa</h3>
+        <p>Sustentabilidade em casa começa com atitudes simples que protegem o planeta.</p>
+      </div>
+    </a>
+</section>
+
+
   </section>
 
   <!-- Rodapé -->
