@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 02/06/2025 às 05:14
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Host: localhost
+-- Tempo de geração: 04/06/2025 às 21:10
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `ecos`
+-- Banco de dados: `ecoS`
 --
 
 -- --------------------------------------------------------
@@ -40,8 +40,11 @@ CREATE TABLE `aluno` (
 --
 
 INSERT INTO `aluno` (`id`, `nome`, `email`, `senha`, `escola_id`) VALUES
-(1, 'cerol', 'Mrcoxas@gmail.com', '$2y$10$ebnnS.FRLb6wGDOupgUXlOaiAZiqFYJTrCwL5NXJR737vqEdIWkWO', 1),
-(2, 'kayke batata', 'kayke252009@gmail.com', '$2y$10$1xaR7enk2/OCDmq4BdlAiOI0BBjWULdrxA36i5c7loBeIC05aooLG', 3);
+(3, 'teste1', 'teste1@gmail.com', '$2y$10$mOvyayYSknYuvmkZGY0KPO6ZsZc1SUSYzHLGkCcTx47LOhcNMyFl.', 1),
+(4, 'Cerol', 'Mrcoxas@gmail.com', '$2y$10$5czQpKPn0egrYHxtTbzby.GUC6nZxSKRysSbNzwFpF0Wv3Tq9G8i6', 1),
+(5, 'mamama', 'ma@gmail.com', '$2y$10$kZqK9QFIh2XKohuo/MceIeNEVVfnfEyUsFvOrvKf0bqB21s.iI53C', 1),
+(6, 'ms', 'ms@gmail.com', '$2y$10$LbafE0B0KWH2CsN83tJoZecKqKev3q6mrQOWyaGOLWq2OeiwMQPpi', 1),
+(7, 'giu', 'giu@gmail.com', '$2y$10$O8UfUnXYOFwQo5QNZSFeTOlhYXHttlF0rX7InpjizGhINpytTstOW', 1);
 
 -- --------------------------------------------------------
 
@@ -64,6 +67,20 @@ INSERT INTO `escola` (`id`, `nome`, `email`, `id_escola`) VALUES
 (1, 'Escola Walter Ramos de Araújo', 'WalterRamosgmail.com', 1),
 (2, 'Escola Adelino Cunha Alcântara', 'AdelinoAlcantara.com', 2),
 (3, 'Escola Waldemar Alcântara', 'WalderAlcantara@gmail.com', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `pagamento`
+--
+
+CREATE TABLE `pagamento` (
+  `nomeinst` varchar(100) DEFAULT NULL,
+  `cnpj` int(14) DEFAULT NULL,
+  `endereço` varchar(50) DEFAULT NULL,
+  `nomeresp` varchar(50) DEFAULT NULL,
+  `formpag` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tabelas despejadas
@@ -90,7 +107,7 @@ ALTER TABLE `escola`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
