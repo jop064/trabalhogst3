@@ -12,9 +12,7 @@ class MobileNavbar {
     this.navLinks.forEach((link, index) => {
       link.style.animation
         ? (link.style.animation = "")
-        : (link.style.animation = `navLinkFade 0.5s ease forwards ${
-            index / 7 + 0.3
-          }s`);
+        : (link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`);
     });
   }
 
@@ -25,20 +23,28 @@ class MobileNavbar {
   }
 
   addClickEvent() {
-    this.mobileMenu.addEventListener("click", this.handleClick);
+    if (this.mobileMenu) {
+      this.mobileMenu.addEventListener("click", this.handleClick);
+    }
   }
 
   init() {
-    if (this.mobileMenu) {
+    if (this.mobileMenu && this.navList && this.navLinks.length > 0) {
+      console.log("✅ MobileNavbar inicializado corretamente.");
       this.addClickEvent();
+    } else {
+      console.warn("⚠️ Elementos do menu mobile não encontrados.");
     }
     return this;
   }
 }
 
-const mobileNavbar = new MobileNavbar(
-  ".mobile-menu",
-  ".nav-list",
-  ".nav-list li",
-);
-mobileNavbar.init();
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("📄 DOM totalmente carregado.");
+  const mobileNavbar = new MobileNavbar(
+    ".mobile-menu",
+    ".nav-list",
+    ".nav-list li"
+  );
+  mobileNavbar.init();
+});
