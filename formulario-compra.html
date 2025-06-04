@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário de Compra</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styleformulario.css">
+</head>
+<body>
+ <style>
+    body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f0;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.form-container {
+  max-width: 600px;
+  background-color: #ffffff;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  color: #2e7d32;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #2e7d32;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #2e7d32;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #1b5e20;
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}
+
+ </style>
+  <div class="form-container">
+    <h2>Finalizar Compra</h2>
+    <form action="processar-pedido.php" method="POST">
+      <div class="form-group">
+        <label for="nome">Nome completo:</label>
+        <input type="text" id="nome" name="nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="pagamento">Forma de pagamento:</label>
+        <select id="pagamento" name="pagamento" required>
+          <option value="pix">PIX</option>
+          <option value="boleto">Boleto</option>
+          <option value="cartao">Cartão de Crédito</option>
+        </select>
+      </div>
+
+      <button type="submit">Comprar</button>
+    </form>
+  </div>
+
+</body>
+</html>
