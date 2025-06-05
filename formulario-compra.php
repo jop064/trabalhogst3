@@ -1,3 +1,10 @@
+
+<?php
+require_once 'conexao.php';
+require_once 'form-compra.php';
+salvarPagamento($conexao);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
